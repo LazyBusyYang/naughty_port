@@ -14,16 +14,21 @@ class NginxPortManager(BasePortManager):
     _LIST_PORT_COMMAND = ['netstat', '-ntlp']
 
     def __init__(self,
+                 name: str,
                  nginx_conf_path: str,
                  logger: Union[None, str, logging.Logger] = None):
         """
         Args:
+            name (str):
+                Name of this port manager.
+            nginx_conf_path (str):
+                Path to nginx configuration file.
             logger (Union[None, str, logging.Logger]):
                 None for root logger. Besides, pass name of the
                 logger or the logger itself.
                 Defaults to None.
         """
-        BasePortManager.__init__(self, logger)
+        BasePortManager.__init__(self, name=name, logger=logger)
         self.nginx_conf_path = nginx_conf_path
 
     def add_port(self, port: int) -> None:

@@ -1,5 +1,4 @@
-from mmcv.utils import Registry
-
+from naughty_port.utils.registry import Registry
 from .base_port_manager import BasePortManager
 from .centos_firewall_port_manager import CentOSFirewallPortManager
 from .nginx_port_manager import NginxPortManager

@@ -20,15 +20,19 @@ class CentOSFirewallPortManager(BasePortManager):
     _RELOAD_PORT_COMMAND = ['firewall-cmd', '--reload']
     _LIST_PORT_COMMAND = ['firewall-cmd', '--list-all']
 
-    def __init__(self, logger: Union[None, str, logging.Logger] = None):
+    def __init__(self,
+                 name: str,
+                 logger: Union[None, str, logging.Logger] = None):
         """
         Args:
+            name (str):
+                Name of this port manager.
             logger (Union[None, str, logging.Logger]):
                 None for root logger. Besides, pass name of the
                 logger or the logger itself.
                 Defaults to None.
         """
-        BasePortManager.__init__(self, logger)
+        BasePortManager.__init__(self, name=name, logger=logger)
 
     def add_port(self, port: int) -> None:
         """Add port to firewall.
