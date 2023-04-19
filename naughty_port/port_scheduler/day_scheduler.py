@@ -77,6 +77,9 @@ class DayScheduler:
             date_port = self.date_port_base + int(date_str)
             # date_port is occupied, use a random port
             if str(date_port) in port_info:
+                self.logger.warning(
+                    f'Port {date_port} is occupied, use a random port.\n' +
+                    'Port usage info:\n' + str(port_info))
                 while True:
                     random_port = random.randint(10000, 50000)
                     if random_port in self.black_list or \
