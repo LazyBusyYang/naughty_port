@@ -7,12 +7,12 @@ pip install git+https://github.com/LazyBusyYang/naughty_port.git
 ```
 
 ## Set period
-Edit `configs/nginx_scheduler.py` and set `period` value in hours. It will write
+Edit `configs/nginx_hour_scheduler.py` and set `period` value in hours. It will write
 the current port in use to the file defined by `cur_port_path`.
 
 ## Start naughty_port
 ```bash
-python tools/run_scheduler.py --config_path configs/nginx_scheduler.py
+python tools/run_scheduler.py --config_path configs/nginx_hour_scheduler.py
 ```
 
 ## Show port
