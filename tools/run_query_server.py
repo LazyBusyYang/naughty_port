@@ -14,7 +14,13 @@ def main(args):
     Handler = ReadFileHttpRequestHandler
     Handler._FILE_PATH = args.port_path
 
-    with socketserver.TCPServer(('0.0.0.0', port), Handler) as httpd:
+    with socketserver.TCPServer(('0.0.0.0', port),
+                                Handler,
+                                bind_and_activate=False) as httpd:
+        httpd.allow_reuse_address = True
+        httpd.server_bind()
+        httpd.server_activate()
+        httpd.timeout = 1
         print('Serving at port', port)
         httpd.serve_forever()
 
