@@ -1,0 +1,3 @@
+*.egg-info
+logs/
+*__pycache__*
